@@ -35,17 +35,42 @@
             font-size: 18px;
             color: #071952;
         }
+
+        /* Rocket styles */
+        #rocket {
+            width: 50px;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: bottom 1.5s ease-in;
+            display: none;
+        }
+        .launch {
+            display: block;
+            bottom: 90%;
+        }
     </style>
 
     <script>
         let countdown = 5; // Start countdown from 5 seconds
         const countdownElement = document.createElement('p');
+        const rocketElement = document.createElement('img');
+        rocketElement.src = 'https://i.pinimg.com/564x/8c/49/ec/8c49ecf0fce5412b50a3354c244acf6c.jpg'; // Small rocket image (use any image URL or your own)
+        rocketElement.id = 'rocket';
         
         // Function to update the countdown every second
         function updateCountdown() {
-            if (countdown > 0) {
+            if (countdown > 1) {
                 countdownElement.innerHTML = `Fasten Your Seat Belt...<br>Taking Off in T-minus ${countdown} seconds...`;
                 countdown--;
+            } else if (countdown === 1) {
+                countdownElement.innerHTML = `Fasten Your Seat Belt...<br>Taking Off in T-minus ${countdown} second...`;
+                countdown--;
+                document.body.appendChild(rocketElement);  // Show the rocket
+                setTimeout(() => {
+                    rocketElement.classList.add('launch');  // Animate the rocket
+                }, 200);  // Slight delay before launching
             } else {
                 // Redirect when countdown reaches 0
                 window.location.href = 'https://open.spotify.com/playlist/2LDnmIAnC8O82YjEFcACjC?si=3k8Nqlw2T4CTzU9hzS9Q4A';
