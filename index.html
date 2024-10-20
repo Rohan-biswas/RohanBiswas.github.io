@@ -35,44 +35,16 @@
             font-size: 18px;
             color: #071952;
         }
-
-        /* Rocket styles */
-        #rocket {
-            width: 100px; /* Adjust the size of the rocket */
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            transition: bottom 1.5s ease-in;
-            display: none;
-        }
-        .launch {
-            display: block;
-            bottom: 90%;
-        }
     </style>
 
     <script>
-        let countdown = 10; // Start countdown from 10 seconds
+        let countdown = 5; // Start countdown from 5 seconds
         const countdownElement = document.createElement('p');
-        const rocketElement = document.createElement('img');
-        rocketElement.src = 'https://i.pinimg.com/564x/8c/49/ec/8c49ecf0fce5412b50a3354c244acf6c.jpg'; // Rocket image URL
-        rocketElement.id = 'rocket';
         
         // Function to update the countdown every second
         function updateCountdown() {
-            if (countdown > 5) {
+            if (countdown > 0) {
                 countdownElement.innerHTML = `Fasten Your Seat Belt...<br>Taking Off in T-minus ${countdown} seconds...`;
-                countdown--;
-            } else if (countdown === 5) {
-                countdownElement.innerHTML = `Fasten Your Seat Belt...<br>Rocket launching in T-minus ${countdown} seconds...`;
-                countdown--;
-                document.body.appendChild(rocketElement);  // Show the rocket at 5 seconds
-                setTimeout(() => {
-                    rocketElement.classList.add('launch');  // Animate the rocket
-                }, 200);  // Slight delay before launching
-            } else if (countdown > 0) {
-                countdownElement.innerHTML = `Rocket launching in T-minus ${countdown} seconds...`;
                 countdown--;
             } else {
                 // Redirect when countdown reaches 0
@@ -97,4 +69,3 @@
     </div>
 </body>
 </html>
-
