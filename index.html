@@ -38,7 +38,7 @@
 
         /* Rocket styles */
         #rocket {
-            width: 50px;
+            width: 100px; /* Adjust the size of the rocket */
             position: absolute;
             bottom: 10px;
             left: 50%;
@@ -53,10 +53,10 @@
     </style>
 
     <script>
-        let countdown = 10; // Start countdown from 5 seconds
+        let countdown = 10; // Start countdown from 10 seconds
         const countdownElement = document.createElement('p');
         const rocketElement = document.createElement('img');
-        rocketElement.src = 'https://i.pinimg.com/564x/8c/49/ec/8c49ecf0fce5412b50a3354c244acf6c.jpg'; // Small rocket image (use any image URL or your own)
+        rocketElement.src = 'https://i.pinimg.com/564x/8c/49/ec/8c49ecf0fce5412b50a3354c244acf6c.jpg'; // Rocket image URL
         rocketElement.id = 'rocket';
         
         // Function to update the countdown every second
@@ -65,12 +65,15 @@
                 countdownElement.innerHTML = `Fasten Your Seat Belt...<br>Taking Off in T-minus ${countdown} seconds...`;
                 countdown--;
             } else if (countdown === 5) {
-                countdownElement.innerHTML = `Fasten Your Seat Belt...<br>Taking Off in T-minus ${countdown} second...`;
+                countdownElement.innerHTML = `Fasten Your Seat Belt...<br>Rocket launching in T-minus ${countdown} seconds...`;
                 countdown--;
-                document.body.appendChild(rocketElement);  // Show the rocket
+                document.body.appendChild(rocketElement);  // Show the rocket at 5 seconds
                 setTimeout(() => {
                     rocketElement.classList.add('launch');  // Animate the rocket
                 }, 200);  // Slight delay before launching
+            } else if (countdown > 0) {
+                countdownElement.innerHTML = `Rocket launching in T-minus ${countdown} seconds...`;
+                countdown--;
             } else {
                 // Redirect when countdown reaches 0
                 window.location.href = 'https://open.spotify.com/playlist/2LDnmIAnC8O82YjEFcACjC?si=3k8Nqlw2T4CTzU9hzS9Q4A';
@@ -94,3 +97,4 @@
     </div>
 </body>
 </html>
+
