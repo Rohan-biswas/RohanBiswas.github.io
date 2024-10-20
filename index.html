@@ -44,7 +44,7 @@
         // Function to update the countdown every second
         function updateCountdown() {
             if (countdown > 0) {
-                countdownElement.textContent = `Fasten Your Seat Belt...<br> Taking Off in T-minus ${countdown} seconds...`;
+                countdownElement.innerHTML = `Fasten Your Seat Belt...<br>Taking Off in T-minus ${countdown} seconds...`;
                 countdown--;
             } else {
                 // Redirect when countdown reaches 0
