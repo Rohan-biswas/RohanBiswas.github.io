@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Redirect in 5 seconds -->
-    <meta http-equiv="refresh" content="5; url=https://open.spotify.com/playlist/2LDnmIAnC8O82YjEFcACjC?si=3k8Nqlw2T4CTzU9hzS9Q4A">
-    
     <title>Friends</title>
     <style>
         body {
@@ -17,7 +14,7 @@
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #EBF4F6; /* Background color change */
+            background-color: #EBF4F6;
         }
         .container {
             text-align: center;
@@ -26,15 +23,42 @@
             max-width: 80%;
             height: auto;
             margin-top: 20px;
-            border: 5px solid #071952; /* Border for the image */
-            border-radius: 10px; /* Optional: rounded corners for the image */
+            border: 5px solid #071952;
+            border-radius: 10px;
         }
         h1 {
-            color: #071952; /* Header color change */
+            color: #071952;
             margin: 0;
-            font-family: 'Comic Sans MS', 'Comic Sans', cursive; /* Comic Sans font for the header */
+            font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+        }
+        p {
+            font-size: 18px;
+            color: #071952;
         }
     </style>
+
+    <script>
+        let countdown = 5; // Start countdown from 5 seconds
+        const countdownElement = document.createElement('p');
+        
+        // Function to update the countdown every second
+        function updateCountdown() {
+            if (countdown > 0) {
+                countdownElement.textContent = `Redirecting in ${countdown} seconds...`;
+                countdown--;
+            } else {
+                // Redirect when countdown reaches 0
+                window.location.href = 'https://open.spotify.com/playlist/2LDnmIAnC8O82YjEFcACjC?si=3k8Nqlw2T4CTzU9hzS9Q4A';
+            }
+        }
+
+        window.onload = function() {
+            // Append the countdown element to the body
+            document.body.appendChild(countdownElement);
+            updateCountdown(); // Show the initial countdown
+            setInterval(updateCountdown, 1000); // Update countdown every second
+        };
+    </script>
 </head>
 <body>
     <div class="container">
@@ -42,7 +66,6 @@
             Everyone can see it, but <br>
             only you get the warm feeling that it brings...</h1>
         <img src="IMG20240717182111.jpg" alt="Cover Image">
-        <p>You will be redirected soon...</p>
     </div>
 </body>
 </html>
